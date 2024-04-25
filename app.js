@@ -106,11 +106,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/generar-qr', (req, res) => {
-    QRPortalWeb();
-    // bot.qr.png
-    const img = fs.readFileSync(__dirname + '/qr.png');
-    res.writeHead(200, { 'Content-Type': 'image/png' });
-    res.end(img, 'binary');
+    try {
+        QRPortalWeb();
+        // bot.qr.png
+        const img = fs.readFileSync(__dirname + '/bot.qr.png');
+        res.writeHead(200, { 'Content-Type': 'image/png' });
+        res.end(img, 'binary');
+    } catch (error) {
+        console.log(error?.message);
+        res.send('Error al generar el QR');
+    }
 })
 
 app.listen(port, () => {
