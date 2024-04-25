@@ -108,7 +108,7 @@ app.get('/', (req, res) => {
 app.get('/generar-qr', (req, res) => {
     QRPortalWeb();
     // bot.qr.png
-    const img = fs.readFileSync('./bot.qr.png');
+    const img = fs.readFileSync(__dirname + '/qr.png');
     res.writeHead(200, { 'Content-Type': 'image/png' });
     res.end(img, 'binary');
 })
