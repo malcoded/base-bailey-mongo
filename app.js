@@ -101,6 +101,9 @@ const main = async () => {
     })
 }
 
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+});
 
 app.get('/generar-qr', (req, res) => {
     QRPortalWeb();
